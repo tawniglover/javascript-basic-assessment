@@ -21,7 +21,7 @@ var bob = {
 	hair: {style: 'spikey', color: 'brown'},
 	likes: ['apples', 'bananas', 'cherries'],
 	presidentOfTheUnitedStates: false
-}
+};
 
 
 
@@ -49,7 +49,7 @@ var zoo = {
 	monkeys: 8,
 	giraffes: 4,
 	elephants: 2
-}
+};
 
 
 // #6 Loop through this object and change all keys that start with the letter s to have a value of 's'
@@ -64,9 +64,14 @@ var snake = {
 
 
 function looper (snake) {
-
+	for (var s in snake) {
+		if (s[0] === 's') {
+			snake[s] = 's';
+		}
+	}
 }
 
+looper(snake);
 
 //#7 Create an array of strings that are the 7 primary colors in the rainbow - red, orange, yellow, green, blue, indigo, violet (lower-case). Call your array rainbowColors
 
@@ -96,8 +101,21 @@ var thirdHero = heroes[2];
 // #9 Write a function called addItem that takes in an array, an item, and adds the item to
 // the array.
 
+function addItem(array, item) {
+	array.push(item);
+	return array;
+}
 
 // #10 Write a function called removeItem that takes in an array of strings, and a string.
+
+function removeItem (array, string) {
+	for (var i = array.length - 1; i >= 0; i--) {
+		if (array[i] === string) {
+			array.splice(i, 1);
+		}
+	}
+	return array;
+}
 
 // Removes all instances of that string from the array. And return the modified array.
 // The order of the array should not be changed
@@ -106,15 +124,31 @@ var thirdHero = heroes[2];
 // #11 Write a function  called doubleTheFun that takes 1 parameter. It should double numbers, and
 // repeats strings. example 4->8, 2.5->5, 'Awesome'->'AwesomeAwesome'
 
-
+function doubleTheFun (parameter) {
+	if (Number(parameter)) {
+		parameter = (Number(parameter) * 2);
+	} else if (typeof parameter === 'string' || parameter instanceof String) {
+		parameter = parameter.repeat(2);
+	}
+	return parameter;
+}
 
 // #12 Write function getValueOfProperty that takes in an object, and the name of a property on the object
 // return the value from the object that corresponds to the property
 
+function getValueOfProperty (obj, name) {
+	if (obj.hasOwnProperty(name)) {
+		return name;
+	}
+}
 
 // #13 Write a function called makeChatMessage that takes in a message and author as parameters
 // and returns an object with a message, author, and timestamp, that is
 // the current time as a Date object
+
+function makeChatMessage (message, author) {
+	return {message: (message),  author: (author), date: (Date.now)};
+}
 
 // #14 Create a function called coderTest that takes in an object that is a person. It looks to see if the person’s name is Jeremy and then changes the person object to have a property called lovesCode with a value of 10.  If their name is Brack set lovesCode to 0.  otherwise set lovesCode to 5.
 
